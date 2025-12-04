@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ds4a4kapbaq5w" path="res://Art assets/1 (1).webp" id="2_l03at"]
 [ext_resource type="Script" uid="uid://dtiun43mpdk0b" path="res://Sceans/back_ground_movement.gd" id="2_ul3dq"]
 [ext_resource type="PackedScene" uid="uid://b3uyytqolry77" path="res://Sceans/player_emu.tscn" id="3_ul3dq"]
-[ext_resource type="PackedScene" uid="uid://bt0whd6rkcvvy" path="res://Sceans/obstacle_1.tscn" id="5_waf1j"]
+[ext_resource type="PackedScene" uid="uid://18bhe4aek03o" path="res://Sceans/spawner.tscn" id="5_waf1j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_waf1j"]
 distance = -12.0
@@ -35,22 +35,22 @@ position = Vector2(143.99998, -80)
 scale = Vector2(0.33814552, 0.33814555)
 texture = ExtResource("2_l03at")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BackGround"]
+[node name="Path Boarders" type="StaticBody2D" parent="BackGround"]
 position = Vector2(-73, -145)
 
-[node name="CollisionShape2D_buttom" type="CollisionShape2D" parent="BackGround/StaticBody2D"]
+[node name="CollisionShape2D_buttom" type="CollisionShape2D" parent="BackGround/Path Boarders"]
 position = Vector2(0, 119)
 shape = SubResource("WorldBoundaryShape2D_waf1j")
 
-[node name="CollisionShape2D_left" type="CollisionShape2D" parent="BackGround/StaticBody2D"]
+[node name="CollisionShape2D_left" type="CollisionShape2D" parent="BackGround/Path Boarders"]
 position = Vector2(-216, 0)
 shape = SubResource("WorldBoundaryShape2D_ul3dq")
 
-[node name="CollisionShape2D_roof" type="CollisionShape2D" parent="BackGround/StaticBody2D"]
-position = Vector2(-301, 88)
+[node name="CollisionShape2D_roof" type="CollisionShape2D" parent="BackGround/Path Boarders"]
+position = Vector2(-289, -21)
 shape = SubResource("WorldBoundaryShape2D_f3kum")
 
-[node name="CollisionShape2D4_right" type="CollisionShape2D" parent="BackGround/StaticBody2D"]
+[node name="CollisionShape2D4_right" type="CollisionShape2D" parent="BackGround/Path Boarders"]
 position = Vector2(75, -55)
 shape = SubResource("WorldBoundaryShape2D_vwr5p")
 
@@ -61,16 +61,10 @@ zoom = Vector2(4, 4)
 [node name="Player_emu" parent="." instance=ExtResource("3_ul3dq")]
 position = Vector2(58, 142)
 scale = Vector2(0.07999818, 0.07999818)
-speed = 1500.0
+speed = 5000.0
 
-[node name="obstacle_1" parent="." instance=ExtResource("5_waf1j")]
-position = Vector2(275, 118)
+[node name="point" type="Node2D" parent="."]
+position = Vector2(342, 155)
 
-[node name="obstacle_2" parent="." instance=ExtResource("5_waf1j")]
-position = Vector2(371, 63)
-
-[node name="obstacle_3" parent="." instance=ExtResource("5_waf1j")]
-position = Vector2(420, 154)
-
-[node name="obstacle_4" parent="." instance=ExtResource("5_waf1j")]
-position = Vector2(526, 79)
+[node name="Spawner" parent="." instance=ExtResource("5_waf1j")]
+position = Vector2(522, 4)

@@ -1,6 +1,18 @@
-[gd_scene format=3 uid="uid://18bhe4aek03o"]
+[gd_scene load_steps=3 format=3 uid="uid://18bhe4aek03o"]
+
+[ext_resource type="Script" uid="uid://dsyrgcobr4uli" path="res://Sceans/spawner.gd" id="1_3myob"]
+[ext_resource type="PackedScene" uid="uid://bt0whd6rkcvvy" path="res://Sceans/obstacle_1.tscn" id="2_idh1y"]
 
 [node name="Spawner" type="Node2D"]
+script = ExtResource("1_3myob")
+obstacle_prefab = ExtResource("2_idh1y")
+
+[node name="y_point_top" type="Node2D" parent="."]
+
+[node name="y_point_bottom" type="Node2D" parent="."]
+position = Vector2(0, 155)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
