@@ -64,4 +64,13 @@ scale = Vector2(0.07999818, 0.07999818)
 speed = 1500.0
 
 [node name="obstacle_1" parent="." instance=ExtResource("5_waf1j")]
-position = Vector2(212, 114)
+position = Vector2(275, 118)
+
+[node name="obstacle_2" parent="." instance=ExtResource("5_waf1j")]
+position = Vector2(371, 63)
+
+[node name="obstacle_3" parent="." instance=ExtResource("5_waf1j")]
+position = Vector2(420, 154)
+
+[node name="obstacle_4" parent="." instance=ExtResource("5_waf1j")]
+position = Vector2(526, 79)

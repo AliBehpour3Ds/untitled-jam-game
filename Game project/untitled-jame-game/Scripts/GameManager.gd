@@ -3,7 +3,7 @@ extends Node
 @onready var wave: int = 1
 @onready var score: int = 0
 @onready var game_speed: float = 1.0
-@onready var background_movment_speed: float = 250.0
+@onready var background_movment_speed: float = 50.0
 
 
 
@@ -26,3 +26,8 @@ func next_wave():
 func add_score(amount):
 	score += amount
 	print(score)
+
+#
+func add_game_speed(amount):
+	game_speed += amount
+	print(game_speed)
