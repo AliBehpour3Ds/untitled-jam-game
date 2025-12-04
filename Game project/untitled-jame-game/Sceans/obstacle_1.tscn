@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt0whd6rkcvvy"]
+
+[ext_resource type="Script" uid="uid://cmadchangowdi" path="res://Sceans/obstacles_1.gd" id="1_mnjv4"]
+[ext_resource type="Texture2D" uid="uid://xg4vkcoc3o0d" path="res://Art assets/Box.png" id="2_qwi2v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odv2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qwi2v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8xw0"]
+size = Vector2(508, 508)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeo8s"]
+size = Vector2(510, 508)
+
+[node name="obstacle_1" type="CharacterBody2D"]
+scale = Vector2(0.08, 0.08)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_mnjv4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_odv2g")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i8xw0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_oeo8s")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -152.0
+offset_top = -325.0
+offset_right = 156.0
+offset_bottom = -282.0
+max_value = 5.0
+step = 1.0
+value = 5.0
+metadata/_edit_use_anchors_ = true
