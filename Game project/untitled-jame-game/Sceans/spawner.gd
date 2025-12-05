@@ -2,15 +2,21 @@ extends Node2D
 
 # Prefabs to spawn (Emu or obsticle)
 @export var obstacle_prefab: PackedScene
+# Spawn_timer
+@onready var timer: Timer = $Timer
+#
+@onready var min_emus = GameManager.min_emus
+@export var max_spawn_time = GameManager.max_spawn_time
 
 # 2 Y points in space to chose a random Y-Postion between them to spawn the prefab.
 @onready var y_point_top: Node2D = $y_point_top
 @onready var y_point_bottom: Node2D = $y_point_bottom
-
 #
 @onready var point_top: Vector2 = y_point_top.global_position
 @onready var point_buttom: Vector2 = y_point_bottom.global_position
 
+#@onready var current_round: int = 0
+@onready var dead_enemies: int = 0
 
 
 func _ready() -> void:
@@ -18,7 +24,8 @@ func _ready() -> void:
 
 # Prefab Spawner
 func _on_timer_timeout() -> void:
-	spawner(obstacle_prefab)
+	#start_round(round_number)
+	pass
 
 
 # Gets a random point postion inside of the two provided points (Vector2) (X will be fixed).
@@ -41,6 +48,28 @@ func spawner(prefab) -> void:
 	# Set the random generaited postion for prefab_instance:
 	prefab_instance.global_position = spawn_location
 
+#
+func start_round(round_number) -> void:
+	print("Start Round: ", round_number, )
+	#
+	var max_emus_spawn = max_round_emus(round_number)
+	var spawn_timer: float = max_spawn_time - (round_number *  0.1)
+
+	#
+	for i in max_emus_spawn:
+		#spawning enemy
+		spawner(obstacle_prefab)
+		print("Spawning enemy")
+		await get_tree().create_timer(spawn_timer).timeout
+
+
+#
+func max_round_emus(round_number) -> int:
+	var max_emus_spawn: int = min_emus * round_number
+	return max_emus_spawn
+
+#
+#func enemy_death(round_number):
 
 
 
