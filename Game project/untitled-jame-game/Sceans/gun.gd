@@ -1,5 +1,7 @@
 extends Sprite2D
 
+@onready var hud: Control = $"../../CanvasLayer/HUD"
+
 @onready var target_marker: Marker2D = $Target_marker
 @onready var marker_2d: Marker2D = $Marker2D
 const BULLET = preload("uid://bxjbis3qhfwto")

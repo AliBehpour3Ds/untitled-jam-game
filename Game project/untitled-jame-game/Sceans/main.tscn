@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0eeiiejjdyu6"]
+[gd_scene load_steps=12 format=3 uid="uid://c0eeiiejjdyu6"]
 
-[ext_resource type="Script" uid="uid://dgucaq08qrhjt" path="res://Sceans/main.gd" id="1_rs1n2"]
 [ext_resource type="Texture2D" uid="uid://ds4a4kapbaq5w" path="res://Art assets/1 (1).webp" id="2_l03at"]
 [ext_resource type="Script" uid="uid://dtiun43mpdk0b" path="res://Sceans/back_ground_movement.gd" id="2_ul3dq"]
 [ext_resource type="PackedScene" uid="uid://b3uyytqolry77" path="res://Sceans/player_emu.tscn" id="3_ul3dq"]
 [ext_resource type="PackedScene" uid="uid://18bhe4aek03o" path="res://Sceans/spawner.tscn" id="5_waf1j"]
+[ext_resource type="PackedScene" uid="uid://b8df8cntppodt" path="res://Shaders/pause_menu.tscn" id="6_f3kum"]
+[ext_resource type="PackedScene" uid="uid://dwssts3r0xoy2" path="res://Sceans/final_record_panel.tscn" id="7_lowpu"]
+[ext_resource type="PackedScene" uid="uid://cy55024q3dili" path="res://Sceans/hud.tscn" id="7_vwr5p"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_waf1j"]
-distance = -12.0
+distance = -28.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ul3dq"]
 normal = Vector2(1, 0)
@@ -19,7 +21,6 @@ normal = Vector2(0, 1)
 normal = Vector2(-1, 0)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_rs1n2")
 
 [node name="BackGround" type="Node2D" parent="."]
 position = Vector2(288, 161)
@@ -39,7 +40,7 @@ texture = ExtResource("2_l03at")
 position = Vector2(-73, -145)
 
 [node name="CollisionShape2D_buttom" type="CollisionShape2D" parent="BackGround/Path Boarders"]
-position = Vector2(0, 119)
+position = Vector2(-2, 131)
 shape = SubResource("WorldBoundaryShape2D_waf1j")
 
 [node name="CollisionShape2D_left" type="CollisionShape2D" parent="BackGround/Path Boarders"]
@@ -68,3 +69,11 @@ position = Vector2(342, 155)
 
 [node name="Spawner" parent="." instance=ExtResource("5_waf1j")]
 position = Vector2(522, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("7_vwr5p")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_f3kum")]
+
+[node name="final_record_panel" parent="CanvasLayer" instance=ExtResource("7_lowpu")]

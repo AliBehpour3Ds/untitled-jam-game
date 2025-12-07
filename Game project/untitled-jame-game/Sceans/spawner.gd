@@ -24,8 +24,7 @@ func _ready() -> void:
 
 # Prefab Spawner
 func _on_timer_timeout() -> void:
-	#start_round(round_number)
-	pass
+	spawner(obstacle_prefab)
 
 
 # Gets a random point postion inside of the two provided points (Vector2) (X will be fixed).
@@ -48,28 +47,9 @@ func spawner(prefab) -> void:
 	# Set the random generaited postion for prefab_instance:
 	prefab_instance.global_position = spawn_location
 
-#
-func start_round(round_number) -> void:
-	print("Start Round: ", round_number, )
-	#
-	var max_emus_spawn = max_round_emus(round_number)
-	var spawn_timer: float = max_spawn_time - (round_number *  0.1)
-
-	#
-	for i in max_emus_spawn:
-		#spawning enemy
-		spawner(obstacle_prefab)
-		print("Spawning enemy")
-		await get_tree().create_timer(spawn_timer).timeout
 
 
-#
-func max_round_emus(round_number) -> int:
-	var max_emus_spawn: int = min_emus * round_number
-	return max_emus_spawn
 
-#
-#func enemy_death(round_number):
 
 
 

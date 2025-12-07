@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy55024q3dili"]
+
+[ext_resource type="Script" uid="uid://ncw7ybl75np8" path="res://Sceans/hud.gd" id="1_6r7vb"]
+[ext_resource type="Texture2D" uid="uid://b1hweqk0vs14m" path="res://Art assets/GUI-Kit-Pack-Free_23.png" id="1_qqsnx"]
+[ext_resource type="Texture2D" uid="uid://wk2m6f6pweuj" path="res://Art assets/GUI-Kit-Pack-Free_11.png" id="2_f5sm7"]
+[ext_resource type="Texture2D" uid="uid://chrumc35y3tl3" path="res://Art assets/GUI-Kit-Pack-Free_35.png" id="3_prasn"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6r7vb")
+
+[node name="Score_panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -211.0
+offset_bottom = 71.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Score_panel"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="Score_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Score:  0"
+
+[node name="TIme" type="Label" parent="Score_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Time: 00:00"
+
+[node name="Base_health_panel" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 262.0
+offset_bottom = 72.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Base_health_panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Base_health_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Base Health:"
+
+[node name="Health_bar" type="TextureProgressBar" parent="Base_health_panel/VBoxContainer"]
+layout_mode = 2
+max_value = 25.0
+value = 25.0
+texture_under = ExtResource("1_qqsnx")
+texture_over = ExtResource("3_prasn")
+texture_progress = ExtResource("2_f5sm7")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

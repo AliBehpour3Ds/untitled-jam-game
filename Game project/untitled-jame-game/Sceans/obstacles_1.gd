@@ -43,5 +43,6 @@ func obstacle_movment(delta) -> void:
 #
 func queue_free_obstacle() -> void:
 	if obstacle.global_position.x <= -140:
+		GameManager.redeuce_health(progress_bar.value)
 		print("passed check")
 		queue_free()
