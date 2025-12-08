@@ -79,7 +79,6 @@ scale = Vector2(0.14722222, 0.15)
 texture = ExtResource("5_06ijv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("7_vwr5p")]
 
