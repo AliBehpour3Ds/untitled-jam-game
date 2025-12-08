@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0eeiiejjdyu6"]
+[gd_scene load_steps=14 format=3 uid="uid://c0eeiiejjdyu6"]
 
 [ext_resource type="Texture2D" uid="uid://ds4a4kapbaq5w" path="res://Art assets/1 (1).webp" id="2_l03at"]
 [ext_resource type="Script" uid="uid://dtiun43mpdk0b" path="res://Sceans/back_ground_movement.gd" id="2_ul3dq"]
 [ext_resource type="PackedScene" uid="uid://b3uyytqolry77" path="res://Sceans/player_emu.tscn" id="3_ul3dq"]
+[ext_resource type="Texture2D" uid="uid://6kyp3pxr3elb" path="res://Art assets/Warning red Graidiant.png" id="5_06ijv"]
 [ext_resource type="PackedScene" uid="uid://18bhe4aek03o" path="res://Sceans/spawner.tscn" id="5_waf1j"]
 [ext_resource type="PackedScene" uid="uid://b8df8cntppodt" path="res://Shaders/pause_menu.tscn" id="6_f3kum"]
 [ext_resource type="PackedScene" uid="uid://dwssts3r0xoy2" path="res://Sceans/final_record_panel.tscn" id="7_lowpu"]
 [ext_resource type="PackedScene" uid="uid://cy55024q3dili" path="res://Sceans/hud.tscn" id="7_vwr5p"]
+[ext_resource type="PackedScene" uid="uid://u40iesn3wcv1" path="res://Sceans/back_ground_music.tscn" id="8_lowpu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_waf1j"]
 distance = -28.0
@@ -40,7 +42,7 @@ texture = ExtResource("2_l03at")
 position = Vector2(-73, -145)
 
 [node name="CollisionShape2D_buttom" type="CollisionShape2D" parent="BackGround/Path Boarders"]
-position = Vector2(-2, 131)
+position = Vector2(-2, 126)
 shape = SubResource("WorldBoundaryShape2D_waf1j")
 
 [node name="CollisionShape2D_left" type="CollisionShape2D" parent="BackGround/Path Boarders"]
@@ -48,7 +50,7 @@ position = Vector2(-216, 0)
 shape = SubResource("WorldBoundaryShape2D_ul3dq")
 
 [node name="CollisionShape2D_roof" type="CollisionShape2D" parent="BackGround/Path Boarders"]
-position = Vector2(-289, -21)
+position = Vector2(-289, 47)
 shape = SubResource("WorldBoundaryShape2D_f3kum")
 
 [node name="CollisionShape2D4_right" type="CollisionShape2D" parent="BackGround/Path Boarders"]
@@ -65,15 +67,25 @@ scale = Vector2(0.07999818, 0.07999818)
 speed = 5000.0
 
 [node name="point" type="Node2D" parent="."]
-position = Vector2(342, 155)
+visible = false
+position = Vector2(405, 150)
 
 [node name="Spawner" parent="." instance=ExtResource("5_waf1j")]
-position = Vector2(522, 4)
+position = Vector2(409, 63)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14.5, 81)
+scale = Vector2(0.14722222, 0.15)
+texture = ExtResource("5_06ijv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("7_vwr5p")]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_f3kum")]
 
 [node name="final_record_panel" parent="CanvasLayer" instance=ExtResource("7_lowpu")]
+
+[node name="BackGround Music" parent="." instance=ExtResource("8_lowpu")]
+volume_db = -70.0

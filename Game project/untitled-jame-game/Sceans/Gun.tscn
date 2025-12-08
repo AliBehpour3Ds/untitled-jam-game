@@ -1,11 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://s5pmy00ix8mg"]
+[gd_scene load_steps=11 format=3 uid="uid://s5pmy00ix8mg"]
 
-[ext_resource type="Texture2D" uid="uid://rp0ylbersxbo" path="res://Art assets/Gun.png" id="1_24eux"]
+[ext_resource type="Texture2D" uid="uid://7qwfwkk4aw8g" path="res://Art assets/Gun running 5 frame sprite.png" id="2_4w2yj"]
 [ext_resource type="Script" uid="uid://cet2echjkcd1u" path="res://Sceans/gun.gd" id="2_q7kma"]
+[ext_resource type="AudioStream" uid="uid://tq46aqvi4sc6" path="res://Sounds/Fireing edited.mp3" id="3_dacrb"]
+[ext_resource type="AudioStream" uid="uid://13cexo80klav" path="res://Sounds/loading.mp3" id="4_dacrb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dacrb"]
+atlas = ExtResource("2_4w2yj")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un71p"]
+atlas = ExtResource("2_4w2yj")
+region = Rect2(1080, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suk3t"]
+atlas = ExtResource("2_4w2yj")
+region = Rect2(2160, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxckq"]
+atlas = ExtResource("2_4w2yj")
+region = Rect2(3240, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocqoo"]
+atlas = ExtResource("2_4w2yj")
+region = Rect2(4320, 0, 1080, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3uan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dacrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un71p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suk3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxckq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocqoo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}]
 
 [node name="Gun" type="Sprite2D"]
-texture = ExtResource("1_24eux")
 script = ExtResource("2_q7kma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(0.64259267, 0.6425925)
+sprite_frames = SubResource("SpriteFrames_y3uan")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 4
+frame_progress = 0.3922976
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(223, -91)
@@ -13,3 +66,14 @@ gizmo_extents = 101.7
 
 [node name="Target_marker" type="Marker2D" parent="."]
 position = Vector2(300, -91)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dacrb")
+volume_db = -3.0
+pitch_scale = 1.3
+
+[node name="Loading_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dacrb")
+volume_db = -1.0
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

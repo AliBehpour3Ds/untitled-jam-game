@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalData="*res://Scripts/GlobalData.gd"
 GameManager="*res://Scripts/GameManager.gd"
+BackGroundMusic="*res://Sceans/back_ground_music.tscn"
 
 [display]
 

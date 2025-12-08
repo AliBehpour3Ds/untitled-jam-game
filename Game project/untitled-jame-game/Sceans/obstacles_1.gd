@@ -11,6 +11,12 @@ var bullet = Bullet.new()
 @export var obstacle_damage: float = 1
 
 #
+@onready var tochable_speed: float = -0.05
+
+# Sound effects:
+@onready var hit_audio: AudioStreamPlayer2D = $Hit_audio
+
+#
 func _ready() -> void:
 	connect_signals()
 #
@@ -28,6 +34,7 @@ func connect_signals() -> void:
 func take_damage(body: Node2D) -> void:
 	if body is Bullet:
 		progress_bar.value -= bullet.bullet_damage
+		hit_audio.play()
 		body.queue_free()
 
 #
@@ -38,7 +45,7 @@ func progress_bar_changed(value: float) -> void:
 
 #
 func obstacle_movment(delta) -> void:
-	obstacle.global_position.x -= moving_speed * game_speed * delta
+	obstacle.global_position.x -= (moving_speed * game_speed * delta) + tochable_speed
 
 #
 func queue_free_obstacle() -> void:

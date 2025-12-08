@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://u40iesn3wcv1"]
+
+[ext_resource type="AudioStream" uid="uid://c6wn6t8mww2y" path="res://Sounds/cinematic-country-loop-western-theme-266525.mp3" id="1_aefge"]
+
+[node name="BackGround Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_aefge")
+autoplay = true

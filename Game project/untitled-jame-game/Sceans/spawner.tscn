@@ -10,9 +10,10 @@ obstacle_prefab = ExtResource("2_idh1y")
 [node name="y_point_top" type="Node2D" parent="."]
 
 [node name="y_point_bottom" type="Node2D" parent="."]
-position = Vector2(0, 155)
+position = Vector2(0, 87)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

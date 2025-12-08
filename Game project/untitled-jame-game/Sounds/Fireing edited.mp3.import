@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tq46aqvi4sc6"
+path="res://.godot/imported/Fireing edited.mp3-d5125857b9a52c9fcb2b4406066e0911.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Fireing edited.mp3"
+dest_files=["res://.godot/imported/Fireing edited.mp3-d5125857b9a52c9fcb2b4406066e0911.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
