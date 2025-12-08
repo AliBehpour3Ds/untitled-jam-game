@@ -1,18 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3uyytqolry77"]
+[gd_scene load_steps=11 format=3 uid="uid://b3uyytqolry77"]
 
-[ext_resource type="Texture2D" uid="uid://cdf7h1lsnfohm" path="res://Art assets/Player Emu test.png" id="1_8nj8i"]
 [ext_resource type="Script" uid="uid://dhtvf03fwjr05" path="res://Sceans/player_emu.gd" id="1_c05e3"]
+[ext_resource type="Texture2D" uid="uid://ceyr2h1vvgnrh" path="res://Art assets/Emu running 5 frame sprite.png" id="2_u26l6"]
 [ext_resource type="PackedScene" uid="uid://s5pmy00ix8mg" path="res://Sceans/Gun.tscn" id="3_u26l6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekhbo"]
+atlas = ExtResource("2_u26l6")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy47t"]
+atlas = ExtResource("2_u26l6")
+region = Rect2(1080, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxhws"]
+atlas = ExtResource("2_u26l6")
+region = Rect2(2160, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll4fa"]
+atlas = ExtResource("2_u26l6")
+region = Rect2(3240, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfr4q"]
+atlas = ExtResource("2_u26l6")
+region = Rect2(4320, 0, 1080, 1080)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c05e3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8nj8i")
+"texture": SubResource("AtlasTexture_ekhbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy47t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxhws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll4fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfr4q")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u26l6"]
@@ -23,10 +55,13 @@ scale = Vector2(0.08, 0.08)
 script = ExtResource("1_c05e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -347)
+position = Vector2(37.5, -325)
+scale = Vector2(0.69953704, 0.69953704)
 sprite_frames = SubResource("SpriteFrames_c05e3")
 animation = &"Idle"
 autoplay = "Idle"
+frame = 4
+frame_progress = 0.27174908
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(39, -17.5)
